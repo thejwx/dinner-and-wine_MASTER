@@ -3,7 +3,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-(async () => { 
+(async () => {
   const server = new McpServer({ name: "Dinner and Wine", version: "0.1.0" });
 
   // Hard-coded cuisine list
