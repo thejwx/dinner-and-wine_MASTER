@@ -15,7 +15,7 @@ import { z } from "zod";
 
   // Expose as config://cuisines
   server.resource(
-    "cuisineList",
+    "cuisine-list",
     "config://cuisines",
     async uri => ({
       contents: [{
@@ -26,9 +26,9 @@ import { z } from "zod";
     })
   );
 
-  // The dinner-and-wine-planner tool
+  // The main tool constructing teh prompt for the full meal with wine
   server.tool(
-    "dinner-and-wine-planner",
+    "full-meal-with-wine-recommendation",
     {
       mainDish:   z.string(),
       sidesCount: z.number().default(2),

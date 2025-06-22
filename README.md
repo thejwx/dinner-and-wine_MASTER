@@ -2,6 +2,8 @@
 
 A start-to-finish walkthrough for creating, testing, and integrating your **dinner-and-wine-planner** MCP tool.
 
+If you want to simply clone this repo and get the super skinny walkthrough, jump to Step 12 below.
+
 ---
 
 ## 1. Create & Open Your Project Folder  
@@ -131,7 +133,7 @@ import { z } from "zod";
 
   // Expose as config://cuisines
   server.resource(
-    "cuisineList",
+    "cuisine-list",
     "config://cuisines",
     async uri => ({
       contents: [{
@@ -142,9 +144,9 @@ import { z } from "zod";
     })
   );
 
-  // The dinner-and-wine-planner tool
+  // The main tool constructing teh prompt for the full meal with wine
   server.tool(
-    "dinner-and-wine-planner",
+    "full-meal-with-wine-recommendation",
     {
       mainDish:   z.string(),
       sidesCount: z.number().default(2),
@@ -194,7 +196,10 @@ import { z } from "zod";
   npx @modelcontextprotocol/inspector npx ts-node src/index.ts
   ```
 
+---
+
 ## 8. Test Your MCP in the MCP Inspector  
+**What this does:** Allows you to test your code before exposing as an MCP server.
 
 - **In Terminal B** you will see a URL with a MCP_PROXY_AUTH_TOKEN passed in the query string similar to the following:
 
@@ -334,3 +339,66 @@ I want an Brazilian feast and I have a big family so need lots of sides.
 ---
 
 🎉 **Complete!** You now have a fully integrated **dinner-and-wine-planner** MCP server. Enjoy planning dinner and wine pairings anywhere.
+
+---
+
+## 12. Get the Uber-Brief Walkthrough Cloning this Project  
+**What this does:** Simplifies the steps down to cloning, tweaking for your environment, and running.
+
+### 12.1 Clone the Repo Locally
+
+1. **Open** Terminal
+2. **Paste** in the following:
+
+- This navigates to the Desktop, clones the repo, navigates to the new project, and opens Visual Studio Code to this project
+
+```
+cd ~/Desktop
+git clone https://github.com/thejwx/dinner-and-wine_MASTER dinner-and-wine_MASTER
+cd ~/Desktop/dinner-and-wine_MASTER
+code .
+```
+
+### 12.2 Test Your MCP in the MCP Inspector  
+**What this does:** Allows you to test your code before exposing as an MCP server.
+
+- If you want to try out the MCP Inspector that comes with the @modelcontextprotocol/sdk package, jump to step 8
+- The whole MCP Inspector demo is encapsulated in step 8, come back here after testing that
+
+
+### 12.3 Hook into Roo Code Globally  
+**What this does:** Registers your tool in Roo so it’s available in every project.
+
+1. **Click the kangaroo icon** in VS Code’s Activity Bar on the left
+2. **In the `ROO CODE` panel**, click the **MCP Servers** icon (three stacked bars at the top)
+3. Click **Edit Global MCP** to open `mcp_settings.json`.
+4. Under `"mcpServers"`, add the following just after `  "mcpServers": {`:
+
+- **Don't forget** to update `[your_workspace_path]` with your path
+- **Add** a comma at the end if you already have MCP servers 
+- **NOTE:** the path here is slightly different than in the detailed steps above since cloning the repo set the folder name to `dinner-and-wine_MASTER` which is different - just so you know
+
+   ```json
+   "dinner-and-wine-planner": {
+     "transport": "stdio",
+     "command":   "npx",
+     "args":      ["ts-node", "src/index.ts"],
+     "cwd":       "/[your_workspace_path]/dinner-and-wine_MASTER"
+   }
+   ```
+5. **Save** the file 
+6. You may see it immediately; otherwise close & reopen the MCP panel or click the ↻ **Refresh** button
+7. **Click** the `Done` button in the `ROO CODE` panel
+
+## 12.4 Run the MCP 
+**What this does:** Demonstrates your server works globally with natural language.
+
+- To test the MCP server, jump to step 11
+- You do not need to spin up a new project if you don't want to, you can skip the first step and jump to opening ROO CODE
+- Creating a new project simply demonstrates that this MCP can function in any project on your local machine
+
+---
+
+🎉 **Complete!** You now have a fully integrated **dinner-and-wine-planner** MCP server. Enjoy planning dinner and wine pairings anywhere.
+
+---
