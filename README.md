@@ -382,7 +382,7 @@ code .
    "dinner-and-wine-planner": {
      "transport": "stdio",
      "command":   "npx",
-     "args":      ["ts-node", "[your_workspace_path]/src/index.ts"],
+     "args":      ["ts-node", "/[your_workspace_path]/src/index.ts"],
      "cwd":       "/[your_workspace_path]/dinner-and-wine_MASTER"
    }
    ```
