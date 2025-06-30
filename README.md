@@ -2,7 +2,7 @@
 
 A start-to-finish walkthrough for creating, testing, and integrating your **dinner-and-wine-planner** MCP tool.
 
-If you want to simply clone this repo and get the super skinny walkthrough, jump to Step 12 below.
+If you want to simply clone this repo and get the super skinny walkthrough, jump to Step 9 below.
 
 ---
 
@@ -286,8 +286,8 @@ code .
 ### 9.2 Test Your MCP in the MCP Inspector  
 **What this does:** Allows you to test your code before exposing as an MCP server.
 
-- If you want to try out the MCP Inspector that comes with the @modelcontextprotocol/sdk package, jump to step 8
-- The whole MCP Inspector demo is encapsulated in step 8, come back here after testing that
+- If you want to try out the MCP Inspector that comes with the @modelcontextprotocol/sdk package, jump to step 6
+- The whole MCP Inspector demo is encapsulated in step 6, come back here after testing that
 
 
 ### 9.3 Hook into Roo Code Globally  
@@ -317,7 +317,7 @@ code .
 ## 9.4 Run the MCP 
 **What this does:** Demonstrates your server works globally with natural language.
 
-- To test the MCP server, jump to step 11
+- To test the MCP server, jump to step 8
 - You do not need to spin up a new project if you don't want to, you can skip the first step and jump to opening ROO CODE
 - Creating a new project simply demonstrates that this MCP can function in any project on your local machine
 
