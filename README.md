@@ -50,55 +50,7 @@ npm install @modelcontextprotocol/sdk zod
 
 ---
 
-## 4. Create `.gitignore`  
-**What this does:** Prevents build artifacts and local caches from being checked into Git.
-
-- In the project root, create a file named `.gitignore`
-- You can of course use menus and buttons to create the file but this ensures it is created in the proper place
-
-1. **Paste** the following into the Terminal panel:
-
-```
-touch .gitignore 
-```
-
-- **Open** `.gitignore` and paste in the following:
-
-```gitignore
-node_modules/
-dist/
-*.tsbuildinfo
-.DS_Store
-```
-
-- OK, I know you know this but, in case an AI is doing these steps for you, make sure to save the file ;)
-
----
-
-## 5. Initialize Git & First Commit  
-**What this does:** Starts version control so you can track and share your code.
-
-- This is not directly necessary but good practice
-
-1. **Paste** the following into the Terminal panel:
-
-- Ensure Git is installed
-
-   ```bash
-   git --version || brew install git
-   ```
-
-- Initialize and commit
-
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial setup: TypeScript + MCP SDK"
-   ```
-
----
-
-## 6. Create Your MCP Server  
+## 4. Create Your MCP Server  
 **What this does:** Defines the `dinner-and-wine-planner` tool and hard-coded `cuisine` resource.
 
 - In the project root, create a file named `index.ts` in a new `src` folder
@@ -176,7 +128,7 @@ import { z } from "zod";
 
 ---
 
-## 7. Launch the Local MCP Inspector  
+## 5. Launch the Local MCP Inspector  
 **What this does:** Runs your server and opens a UI to exercise the tool over stdio.
 
 - Consider your current Terminal instance as **Terminal A** which will run your MCP server
@@ -198,7 +150,7 @@ import { z } from "zod";
 
 ---
 
-## 8. Test Your MCP in the MCP Inspector  
+## 6. Test Your MCP in the MCP Inspector  
 **What this does:** Allows you to test your code before exposing as an MCP server.
 
 - **In Terminal B** you will see a URL with a MCP_PROXY_AUTH_TOKEN passed in the query string similar to the following:
@@ -229,34 +181,7 @@ import { z } from "zod";
 
 ---
 
-## 9. Publish to GitHub via CLI  
-**What this does:** Creates a GitHub repo and pushes your local commit.
-
-- Again, not really required, feel free to skip if you like
-
-1. **Open a third terminal (Terminal C) back in VS Code**, `Terminal > New Terminal`, keeping Terminals A & B running
-2. **Paste** the following into the Terminal panel:
-
-- **NOTE:** If this is your first time pushing to Github here, it will ask you to authenticate. It's a bit awkward, just follow the steps carefully... Good luck!
-- **ALSO:** Don't forget to update `[your_workspace_path]` and `[your_github-username]` with your path and username
-
-```bash
-gh --version >/dev/null 2>&1 || brew install gh
-if ! gh auth status >/dev/null 2>&1; then
-  gh auth login
-fi
-cd ~/[your_workspace_path]/dinner-and-wine
-if ! gh repo view [your_github-username]/dinner-and-wine >/dev/null 2>&1; then
-  gh repo create [your_github-username]/dinner-and-wine --public --source=. --remote=origin --push
-fi
-git add .
-git commit -m "Describe your changes here"
-git push
-```
-
----
-
-## 10. Hook into Roo Code Globally  
+## 7. Hook into Roo Code Globally  
 **What this does:** Registers your tool in Roo so it’s available in every project.
 
 1. **Click the kangaroo icon** in VS Code’s Activity Bar on the left
@@ -281,7 +206,7 @@ git push
 
 ---
 
-## 11. Invoke Your Tool from Any Project  
+## 8. Invoke Your Tool from Any Project  
 **What this does:** Demonstrates your server works globally with natural language.
 
 1. **Paste** the following into the Terminal panel to create and open a new, test folder as if it were a new project:
@@ -300,13 +225,12 @@ code .
   ```
   Give me a dinner idea for chicken
   ```
+
 4. **Click** the Approve button to allow the MCP to be run (and optionally check the **Always Allow** checkbox)
 
 - If you check **Always Allow**, Roo will always use this MCP automatically if it feels it needs it and without waiting for you to respond to it
 - You can always deselect **Always Allow** in the MCP Server settings
 - Roo will display the response with sides and wine information
-
-### 11.4 Experiment further
 
 5. **In the prompt box**, enter each of the following (or whatever you want, what do I care):
 
@@ -342,10 +266,10 @@ I want an Brazilian feast and I have a big family so need lots of sides.
 
 ---
 
-## 12. Get the Uber-Brief Walkthrough Cloning this Project  
+## 9. Get the Uber-Brief Walkthrough Cloning this Project  
 **What this does:** Simplifies the steps down to cloning, tweaking for your environment, and running.
 
-### 12.1 Clone the Repo Locally
+### 9.1 Clone the Repo Locally
 
 1. **Open** Terminal
 2. **Paste** in the following:
@@ -359,14 +283,14 @@ cd ~/Desktop/dinner-and-wine_MASTER
 code .
 ```
 
-### 12.2 Test Your MCP in the MCP Inspector  
+### 9.2 Test Your MCP in the MCP Inspector  
 **What this does:** Allows you to test your code before exposing as an MCP server.
 
 - If you want to try out the MCP Inspector that comes with the @modelcontextprotocol/sdk package, jump to step 8
 - The whole MCP Inspector demo is encapsulated in step 8, come back here after testing that
 
 
-### 12.3 Hook into Roo Code Globally  
+### 9.3 Hook into Roo Code Globally  
 **What this does:** Registers your tool in Roo so it’s available in every project.
 
 1. **Click the kangaroo icon** in VS Code’s Activity Bar on the left
@@ -390,7 +314,7 @@ code .
 6. You may see it immediately; otherwise close & reopen the MCP panel or click the ↻ **Refresh** button
 7. **Click** the `Done` button in the `ROO CODE` panel
 
-## 12.4 Run the MCP 
+## 9.4 Run the MCP 
 **What this does:** Demonstrates your server works globally with natural language.
 
 - To test the MCP server, jump to step 11
